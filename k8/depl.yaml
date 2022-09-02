@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fd
+  namespace: define
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fd
+  template:
+    metadata:
+      labels:
+        app: fd
+    spec:
+      containers:
+        - name: fd
+          image: fredysomy/fd:latest7
+          imagePullPolicy: Always
+          ports:
+            - name: web 
+              containerPort: 3000
+              protocol: TCP
